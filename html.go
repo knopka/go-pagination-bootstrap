@@ -88,7 +88,7 @@ func (p *Pagination)getUrl(page int, text string) string {
 			strParam = strParam + "&" + k + "=" + v[0]    // TODO
 		}
 
-		href := baseUrl + "?page=" + strPage + strParam
+		href := baseUrl.String() + "?page=" + strPage + strParam
 		return p.GetAvailablePageWrapper(href, text)
 	}
 }
