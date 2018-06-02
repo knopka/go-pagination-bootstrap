@@ -11,7 +11,7 @@ import (
 
 const tmpl string = `
 {{ if .HasPages }}
-<ul class="pagination pagination-sm">
+<div class="pagination">
   {{ .GetPreviousButton "<" }}
   {{ range .FirstPart }}
     {{ . }}
@@ -29,7 +29,7 @@ const tmpl string = `
 	{{ end }}
   {{ end }}
   {{ .GetNextButton ">" }}
-</ul>
+</div>
 {{end}}
 `
 
@@ -94,16 +94,16 @@ func (p *Pagination)getUrl(page int, text string) string {
 }
 
 func (p *Pagination) GetActivePageWrapper(text string) string {
-	return "<li class=\"active\"><span>" + text + "</span></li>"
+	return "<a class=\"active\"><span>" + text + "</span></a>"
 }
 func (p *Pagination) GetDisabledPageWrapper(text string) string {
-	return "<li class=\"disabled\"><span>" + text + "</span></li>"
+	return "<a class=\"disabled\"><span>" + text + "</span></a>"
 }
 func (p *Pagination) GetAvailablePageWrapper(href, page string) string {
-	return "<li><a href=\"" + href + "\">" + page + "</a></li>"
+	return "<a href=\"" + href + "\">" + page + "</a>"
 }
 func (p *Pagination) GetDots() string {
-	return "<li class=\"disabled\"><span>...</span></li>"
+	return "<a class=\"disabled\"><span>...</span></a>"
 }
 func (p *Pagination)GetPreviousButton(text string) string { // "&laquo;"
 	if p.currentPage <= 1 {
